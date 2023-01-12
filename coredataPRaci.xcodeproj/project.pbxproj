@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28403EBF296FE50800C5E148 /* trynewui.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28403EBE296FE50800C5E148 /* trynewui.swift */; };
 		286FFB34295C7D4200D10E8A /* maindoc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FFB33295C7D4200D10E8A /* maindoc.swift */; };
 		286FFB36295C7D4200D10E8A /* CoreDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FFB35295C7D4200D10E8A /* CoreDataViewModel.swift */; };
 		286FFB38295C7D4400D10E8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 286FFB37295C7D4400D10E8A /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		28403EBE296FE50800C5E148 /* trynewui.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = trynewui.swift; sourceTree = "<group>"; };
 		286FFB30295C7D4200D10E8A /* coredataPRaci.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = coredataPRaci.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		286FFB33295C7D4200D10E8A /* maindoc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = maindoc.swift; sourceTree = "<group>"; };
 		286FFB35295C7D4200D10E8A /* CoreDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataViewModel.swift; sourceTree = "<group>"; };
@@ -85,8 +87,9 @@
 			isa = PBXGroup;
 			children = (
 				286FFB6E2962B6D900D10E8A /* addNameBirth.swift */,
-				286FFB682962A24E00D10E8A /* firstPage.swift */,
 				286FFB702962F2E100D10E8A /* calculatedpage.swift */,
+				286FFB682962A24E00D10E8A /* firstPage.swift */,
+				28403EBE296FE50800C5E148 /* trynewui.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28403EBF296FE50800C5E148 /* trynewui.swift in Sources */,
 				286FFB43295C7D9400D10E8A /* coremodel.xcdatamodeld in Sources */,
 				286FFB742966E02100D10E8A /* birthdaybaxiCal.swift in Sources */,
 				286FFB36295C7D4200D10E8A /* CoreDataViewModel.swift in Sources */,
