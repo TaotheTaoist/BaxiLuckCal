@@ -10,13 +10,16 @@ import CoreData
 
 struct calculatedpage: View {
      
-    @State var calcu = birthdaybaxiCal()
-    @StateObject var vm = CoreDataViewModel()
     
-    let entity: FruitEntity
-    var dateComponents: (Int, Int, Int, String) {
-        calcu.extractDateComponents(date:entity.birthday ?? Date() , entity: entity)
-      }
+    @StateObject var vm = CoreDataViewModel()
+    @State var calcu = birthdaybaxiCal()
+        let entity: FruitEntity
+        let id: UUID
+        var dateComponents: (Int, Int, Int, String) {
+            calcu.extractDateComponents(date:entity.birthday ?? Date() , entity: entity)
+        }
+    
+    
     var body: some View {
         
         VStack{

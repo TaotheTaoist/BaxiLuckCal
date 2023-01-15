@@ -109,7 +109,7 @@ class birthdaybaxiCal {
           }
         var calyearb: String
         if ((newYear - 3) % 12 != 0){
-            var year = (newYear-3) % 12
+            let year = (newYear-3) % 12
             calyearb = 地支[year - 1]
         }else {
             calyearb = 地支.last ?? ""
@@ -125,7 +125,7 @@ class birthdaybaxiCal {
           }
         var calyear: String
         if ((newYear - 3) % 10 != 0) {
-            var newYear = (newYear-3) % 10
+            let newYear = (newYear-3) % 10
             calyear = 天干[newYear - 1]
         } else {
             calyear = 天干.last ?? ""
@@ -159,7 +159,7 @@ class birthdaybaxiCal {
     func getBaxiTimebot(time: String) -> String {
       let hourMinute = time.split(separator: ":", maxSplits: 1).map { String($0) }
       let hour = Int(hourMinute[0])!
-      let minute = Int(hourMinute[1])!
+        _ = Int(hourMinute[1])!
       // Calculate the number of hours since midnight
       let hoursSinceMidnight = hour
       // Determine the correct 地支

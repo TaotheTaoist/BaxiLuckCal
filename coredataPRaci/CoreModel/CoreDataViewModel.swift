@@ -34,20 +34,30 @@ class CoreDataViewModel: ObservableObject{
         }
     }
     func addnameBirth(name :String, birthdate: Date, sex:Bool){
-        
+        let id = UUID()
         let addnameBirthday = FruitEntity(context: container.viewContext)
         addnameBirthday.name = name
         addnameBirthday.birthday = birthdate
         addnameBirthday.toggleSex = sex
+        addnameBirthday.id = id
         saveData()
     }
-    func deleteFruit(indexSet: IndexSet){
-        guard let index = indexSet.first else {return}
+//    func deleteFruit(indexSet: IndexSet){
+//        guard let index = indexSet.first else {return}
+//        let entity = savedEntities[index]
+//        container.viewContext.delete(entity)
+//        saveData()
+//
+//    }
+    func deleteFruit(at index: Int) {
         let entity = savedEntities[index]
         container.viewContext.delete(entity)
         saveData()
-        
     }
+    
+    
+    
+    
     func saveData(){
         do {
             try container.viewContext.save()

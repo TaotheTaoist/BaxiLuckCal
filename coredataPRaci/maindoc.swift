@@ -6,12 +6,12 @@
 //
 
 import SwiftUI
-
+    
 @main
 struct maindoc: App {
     var body: some Scene {
         WindowGroup {
-            firstPage()
+            firstPage1()
         }
     }
 }
