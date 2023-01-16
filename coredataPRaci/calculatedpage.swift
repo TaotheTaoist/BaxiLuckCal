@@ -10,57 +10,133 @@ import CoreData
 
 struct calculatedpage: View {
      
-    
+    @State var sCal = strenghCal()
+    @State var lSy = luckStartyear()
     @StateObject var vm = CoreDataViewModel()
+    @State var temptop = 0
     @State var calcu = birthdaybaxiCal()
         let entity: FruitEntity
         let id: UUID
         var dateComponents: (Int, Int, Int, String) {
             calcu.extractDateComponents(date:entity.birthday ?? Date() , entity: entity)
-        }
-    
+        
+    }
     
     var body: some View {
         
-        VStack{
-            Text(entity.name ?? "")
-            Text(entity.birthday ?? Date(), style: .date)
-            Text(entity.birthday ?? Date(), style: .time)
-            Text(entity.toggleSex ? "Female" : "Male")
+        ZStack {
+            BadgeBackground(accEarth: sCal.earth(),accFire: sCal.fire(),accWater: sCal.water(),accWood: sCal.wood(),accMetal: sCal.metal())
+            
+            VStack{
+                Text(entity.name ?? "")
+                Text(entity.birthday ?? Date(), style: .date)
+                Text(entity.birthday ?? Date(), style: .time)
+                Text(entity.toggleSex ? "Female" : "Male")
+            }
         }
-        Button(action:{
-            print(calcu.extractDateComponentsTime(dateComponents: dateComponents))
-            print(calcu.getBaxiyear(year: self.dateComponents.0,month: self.dateComponents.1))
+//        .background(Image("fbgimage").resizable().frame(width: 1400, height: 1400) .aspectRatio(contentMode: .fit))
+        
+        .onAppear {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+
+            let formattedDate = dateFormatter.string(from: entity.birthday ?? Date())
+//            print(lSy.convertToLunar(birthday: formattedDate))
+//            let lunarBD = lSy.convertToLunar(birthday: formattedDate)
+            let yT = calcu.getBaxiyear(year: self.dateComponents.0, month: self.dateComponents.1)
+            let birthTime = calcu.extractDateComponentsTime(dateComponents: dateComponents)
+            print(formattedDate)
+//            print(birthTime)
+            print(lSy.shunOrNi(bd: formattedDate,sex: entity.toggleSex,yeartop: yT,bdTime: birthTime))
+          
+            
+
+            
+            let baxiDay = calcu.getbaxiDay(year: self.dateComponents.0, month: self.dateComponents.1, day: self.dateComponents.2)
+            let baxi2Day = calcu.getbaxiDay(year: self.dateComponents.0, month: self.dateComponents.1, day: self.dateComponents.2)
+            let topday = String(baxiDay.prefix(1))
+            let botday = String(baxi2Day.suffix(1))
+            let baxiMonthtop = calcu.evaluateData(year: dateComponents.0, month: dateComponents.1, day: dateComponents.2)
+            let monthTop = String(baxiMonthtop.prefix(1))
+            let monthbot = String(baxiMonthtop.suffix(1))
+           
+
+            sCal.chitop(zhi: calcu.getBaxiyear(year: self.dateComponents.0, month: self.dateComponents.1))
+            sCal.chibot(zhi: calcu.getBaxiyearbot(year: self.dateComponents.0, month: self.dateComponents.1))
+            sCal.chitop(zhi: monthTop)
+            sCal.chibotMonth(zhi: monthbot)
+            sCal.chitop(zhi: topday)
+            sCal.chibot(zhi: botday)
+            sCal.chitop(zhi: calcu.getBaxitime(year: self.dateComponents.0, month: self.dateComponents.1, day: self.dateComponents.2, time: self.dateComponents.3))
+            sCal.chibot(zhi: calcu.getBaxiTimebot(time: self.dateComponents.3))
+            sCal.metal()
+            sCal.wood()
+            sCal.water()
+            sCal.fire()
+            sCal.earth()
+            
+            print(calcu.getBaxiyear(year: self.dateComponents.0, month: self.dateComponents.1))
             print(calcu.getBaxiyearbot(year: self.dateComponents.0, month: self.dateComponents.1))
-            print(calcu.getBaximonthtop(getBaxiyear: calcu.getBaxiyear, year: self.dateComponents.0, thatmonth: self.dateComponents.1))
-            print(calcu.getBaxiMonthbot(month: self.dateComponents.1))
+            print(monthTop)
+            print(monthbot)
             print(calcu.getbaxiDay(year: self.dateComponents.0, month: self.dateComponents.1, day: self.dateComponents.2))
             print(calcu.getBaxitime(year: self.dateComponents.0, month: self.dateComponents.1, day: self.dateComponents.2, time: self.dateComponents.3))
             print(calcu.getBaxiTimebot(time: self.dateComponents.3))
-            }, label:{
-            Text("Saved")
-                .font(.headline)
-                .foregroundColor(.white)
-                .frame(height: 55)
-                .frame(maxWidth: .infinity)
-                .background(Color(.systemPink))
-                .cornerRadius(10)
-        })
+            
+                }
+        
+        
+// all the printable
+        
+        
+        
+        //        Button(action:{
+        
+        //            print(calcu.extractDateComponentsTime(dateComponents: dateComponents))
+        //            print(formattedDate) // Prints something like "5 5, 16:36"
+        
+        //            print(entity.toggleSex)
+        //            print(calcu.extractDateComponents(date: Date(), entity: entity)) // prints today's the year, month, day and time
+        
+        
+        //            var yearTop = calcu.getBaxiyearbot(year: self.dateComponents.0, month: self.dateComponents.1)
+        //            var strengthCal = strenghCal(yearTop: yearTop)
+        
+        //            var strengthCal = strenghCal(yearTop:  calcu.getBaxiyearbot(year: self.dateComponents.0, month: self.dateComponents.1))
+        //            var yearbot = calcu.getBaxiyearbot(year: self.dateComponents.0, month: self.dateComponents.1)
+        //            var monthBot = calcu.getBaxiMonthbot(month: self.dateComponents.1)
+        //            var baxiDate = calcu.getbaxiDay(year: self.dateComponents.0, month: self.dateComponents.1, day: self.dateComponents.2)
+        //            sCal.chitop(zhi: calcu.getBaxiyear(year: self.dateComponents.0, month: self.dateComponents.1))
+        //            var toptian = sCal.setup()
+        //            print(toptian)
+        
+        
+        
+        //            print(calcu.extractDateComponents(date: Date(), entity: entity)) // prints the year, month, day and time
+        //            print(calcu.extractDateComponentsTime(dateComponents: dateComponents)) // print the time only
+        //            print(calcu.getBaxiyear(year: self.dateComponents.0, month: self.dateComponents.1))
+        //            print(calcu.getBaxiyearbot(year: self.dateComponents.0, month: self.dateComponents.1))
+        //            print(calcu.evaluateData(year: dateComponents.0, month: dateComponents.1, day: dateComponents.2))
+        //            print(calcu.getBaxiMonthbot(month: self.dateComponents.1))
+        //            print(calcu.getbaxiDay(year: self.dateComponents.0, month: self.dateComponents.1, day: self.dateComponents.2))
+        //            print(calcu.getBaxitime(year: self.dateComponents.0, month: self.dateComponents.1, day: self.dateComponents.2, time: self.dateComponents.3))
+        //            print(calcu.getBaxiTimebot(time: self.dateComponents.3))
+        
+        //            }, label:{
+        //            Text("Saved")
+        //                .font(.headline)
+        //                .foregroundColor(.white)
+        //                .frame(height: 55)
+        //                .frame(maxWidth: .infinity)
+        //                .background(Color(.systemPink))
+        //                .cornerRadius(10)
+        //        })
+        
+        
     }
     
     
     
 }
-
-
-
-
-//struct calculatedpage_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let entity = FruitEntity()
-//
-//        calculatedpage(entity: entity)
-//    }
-//}
 
 
