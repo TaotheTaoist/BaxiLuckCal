@@ -13,30 +13,53 @@ struct trynewui: View {
     @State var selectedDate: Date = Date()
     @State private var addNewPresented = false
     var body: some View {
-        ZStack{
-            
-            NavigationStack{
-                Image("fbgimage").resizable()
-                    .edgesIgnoringSafeArea(.all)
-                                        .scaledToFill()
-                                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        
+        NavigationStack{
+            ZStack(alignment: .center){
+                GeometryReader {  geometry in
+                    Image("fbgimage")
+                        .resizable()
+                        .edgesIgnoringSafeArea(.all)
+                        .scaledToFill()
+                        .opacity(0.2)
+                        .frame(maxWidth: .infinity,
+                               maxHeight: .infinity)
+                }.border(Color.green, width: 3)
+                                        
 
-                List {
-                    ForEach(vm.savedEntities){ entity in
-                        NavigationLink(destination: calculatedpage(vm: vm, entity: entity),
-                                       label: {
-                            Text(entity.name ?? "")
-                            Text(entity.birthday ?? Date() , style: .date)
-                            Text(entity.birthday ?? Date(), style: .time)
-                        })
-                    }
                     
-                    .onDelete(perform:vm.deleteFruit)
-                    .navigationBarTitleDisplayMode(.inline)
+                VStack (alignment:.trailing){
+                    HStack{
+                        Image(systemName:"trash")
+                        Spacer()
+                        Button(action: {self.addNewPresented.toggle()}) {
+                                Image(systemName: "plus.circle")
+                                    .font(.title)
+                                    .foregroundColor(.blue)
+                                }
+                            .padding()
+                                .sheet(isPresented: $addNewPresented) {
+                                    addNameBirth().onDisappear {  ///<== just add entity inside of para
+                                        self.refreshData()
+                                    }
+                            }
+                                .border(Color.red)
+                        
+                                
+                    }
+                    .padding(.horizontal)
+                    .border(Color.green, width: 3)
+                    
+                   
+//                    List{}.opacity(0.2)
+                    
                 }
-             
+                .border(Color.green, width: 3)
+                .padding()
+                .scaledToFit()
+                
+                
             }
-            
         }
     }
     func refreshData() {
