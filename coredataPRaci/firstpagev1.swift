@@ -55,6 +55,7 @@ struct firstPage1: View {
                                                 self.isEditing.toggle()
                                                 if self.isEditing {
                                                     self.vm.deleteFruit(at: index)
+//                                                    self.vm.deleteFruit(at: index)
                                                     self.vm.fetchFruits()
                                                 }
                                             }) {
@@ -120,12 +121,13 @@ struct ExtractedView: View {
             Text(entity.name ?? "")
                 .font(.largeTitle)
                 .fontWeight(.bold)
-                .frame(width: 200.0, height: 100.0)
+                .frame(width: 300.0, height: 100.0)
                 .foregroundStyle(.linearGradient(colors: [.white.opacity(0.7),.purple], startPoint: .topLeading, endPoint: .bottomTrailing))
             
             Text(entity.birthday ?? Date(), style: .date)
                 .multilineTextAlignment(.leading).lineLimit(1)
                 .foregroundColor(/*@START_MENU_TOKEN@*/.white/*@END_MENU_TOKEN@*/)
+            
             
         }
         .padding(.all)

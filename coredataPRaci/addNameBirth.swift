@@ -25,7 +25,7 @@ struct addNameBirth: View {
     }()
     
     var body: some View {
-        NavigationView{
+//        NavigationView{
             
             VStack(spacing:20){
                 //                Color.black
@@ -66,7 +66,7 @@ struct addNameBirth: View {
                 //                Color.black
             }
             
-        }
+//        }
     }
     
 }
