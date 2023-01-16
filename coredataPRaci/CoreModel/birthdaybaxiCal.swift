@@ -41,6 +41,436 @@ class birthdaybaxiCal {
         return dateComponents.3
     }///example:"11:32"
     
+    func evaluateData(year: Int, month: Int, day: Int) ->(String){
+        let oneTothree = Array(1...3)
+        let oneTofour = Array(1...4)
+        let oneTofive = Array(1...5)
+        let oneTosix = Array(1...6)
+        let oneTotwo = Array (1...2)
+        let oneToseven = Array(1...7)
+        let oneTo8 = Array(1...8)
+        var shoukan = [Int:[Int]]()
+        var haru = [Int:[Int]]()
+        var jingzhe = [Int:[Int]]()
+        var qingming = [Int:[Int]]()
+        var tachinatsu = [Int:[Int]]()
+        var mangzhong = [Int:[Int]]()
+        var sSummer = [Int:[Int]]()
+        var liqiu = [Int:[Int]]()
+        var bailu = [Int:[Int]]()
+        var frostDrop = [Int:[Int]]()
+        var liDong = [Int:[Int]]()
+        var bigSnow = [Int:[Int]]()
+        
+        let shoukanyears4 = [1949, 1953, 1957, 1961, 1965, 1969, 1973, 1977, 1981, 1985, 1986, 1989, 1990, 1994, 1998, 2001, 2002, 2005, 2009, 2010, 2013, 2014, 2018, 2019, 2017, 2021, 2022, 2023, 2025, 2026, 2027, 2029, 2030, 2031, 2033, 2034, 2035, 2037, 2038, 2039, 2041, 2042, 2043]
+        let shoukanyears5 = [1900,1901,1902,1903,1905,1906,1907,1909,1910,1911,1913,1914,1915,1916,1917,1918,1919,1920,1921,1922,1923,1924,1925,1926,1927,1928,1929,1930,1931,1932,1933,1934,1935,1936,1937,1938,1939,1940,1941,1942,1943,1944,1945,1946,1947,1948,1950,1952,1954,1955,1956,1958,1959,1960,1962,1963,1964,1966,1967,1968,1970,1971,1972,1974,1975,1976,1978,1979,1980,1982,1983,1984,1987,1988,1991,1992,1995,1996,1999,2000,2003,2004,2007,2008,2011,2012,2015,2016,2020,2024,
+        2028, 2032,2036,2040,2044,2048]
+        let shoukanyears6 = [1904,1908,1912]
+        
+        let haruyear3 = [1900,1901,1905, 1909, 1913, 1914,1917,1918,1921,1922,1925,1926,1930,1933,1934,1937,1938,1941,1942,1945,1946,1947,1949,1950,1951,1953,1954,1955,1957,1958,1959
+        ,1961,1962,1963,1965,1966,1967,1969,1970,1971,1973,1974,1975,1977,1978,1979,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2012,2013,2014,2015,2016,2018,2019,2020,2022,2023,2024,2026,2027,2028,2030,2031,2032,2034,2035,2036,2038,2039
+        ,2040,2042,2043,2044,2046,2047,2048]
+        let haruyear4 = [1902, 1903,1904,1906,1907,1908,1910,1911,1912,1915,1916,1919,1920,1923,1924,1927,1928,1931,1932,1935,1936,1939,1940,1943,1944,1948,1952,1956,1960,1964,1968,1972,1976,1980]
+        let haruyear2 = [2017,2021,2025,2029,2033,2037,2041,2045,2049,2050]
+        
+        
+        let jingzheyear6 = [1903,1907,1911]
+        let jingzheyear5 = [1900,1901,1902,1904,1905,1906,1908,1909,1910,1912,1913,1914,1915,1916,1917,1918,1919,1920,1921,1922,1923,1924,1925,1926,1927,1928,1929,1930,1931,1932,1933
+        ,1934,1935,1936,1937,1938,1939,1940,1941,1942,1943,1944,1945,1946,1947,1949,1950,1951,1953,1954,1955,1957,1958,1959,1961,1962,1963,1965,1966,1967,1969,1970,1971,1973,1974
+        ,1975,1977,1978,1979,1981,1982,1983,1986,1987,1990,1991,1994,1995,1998,1999,2002,2003,2006,2007,2010,2011,2014,2015,2019,2023,2027,2031,2035,2039,2043,2047]
+        let jingzheyear4 = [1948,1952,1956,1960,1964,1968,1972,1976,1980,1984,1985,1988,1989,1992,1993,1997,1996,2000,2001,2004,2005,2008,2009,2014,2013,2016,2017,2018,2020,2021,2022
+        ,2024,2025,2026,2028,2029,2030,2032,2033,2034,2036,2037,2038,2040,2041,2042,2044,2045,2048,2049,2050]
+        
+        
+        let qingming3 = [1976,1980,1984,1988,1992,1996,2000,2004,2008,2009,2012,2013,2016,2017,2020,2021,2024,2025,2028,2029,2032,2033,2036,2037,2040,2044,2045,
+        2046,2048,2049,2050]
+        let qingming4 = [1900, 1901, 1904, 1905, 1908,1909, 1912,1913, 1914, 1916, 1917, 1918, 1920, 1921, 1922, 1924, 1925, 1926, 1928, 1929, 1930, 1932, 1933, 1934, 1936, 1937,
+                         1938, 1940,1941, 1942, 1944, 1945, 1946, 1947, 1948, 1949, 1950,1951, 1952, 1953, 1954, 1955, 1956 , 1957, 1958, 1959 , 1960, 1961, 1962, 1963, 1964, 1965, 1966, 1967, 1968,1969, 1970, 1971, 1972, 1973, 1974, 1975, 1977,1978,1979,1981,1982,1983,1985,1986,1987,1989,1990,1991,1993,1994,1995,1997,1998,2001,
+        2002,2003,2005,2006,2007,2010,2011,2014,2015,2018,2019,2022,2023,2026,2027, 2030,2031,2034,2035,2038,2039,2043,2047]
+        let qingming5 = [1902,1903,1906,1907,1910,1911,1915,1919,1923,1927,1931,1935,1939,1943]
+        
+        
+        
+        let tachinatsu4 = [1944,1948, 1952, 1956,1960, 1964, 1968, 1972, 1976, 1980, 1981, 1984, 1985, 1988, 1989, 1992, 1993, 1996, 1997, 2000, 2001, 2004, 2005, 2008, 2009, 2010,
+        2012, 2013, 2014, 2016, 2017, 2018, 2020,2021, 2022, 2024, 2025, 2026, 2028, 2029, 2030, 2032, 2033, 2034, 2035, 2036, 2037, 2038, 2039, 2040, 2041, 2042, 2043, 2044, 2045,
+        2046, 2047]
+        let tachinatsu5 = [1900,1901,1902,1904,1905,1906,1908,1909,1910,1912,1913,1914,1915,1916,1917,1918,1919,1920,1921,1922,1923,1924,1925,1926
+                           ,1927,1928,1929,1930,1931,1932,1933,1934,1935,1936,1937,1938,1939,1940,1941,1942,1943,1945,1946,1947,1949,1950,1951,1953
+        ,1954,1955,1957,1958,1959,1961,1962,1963,1965,1966,1967,1969,1970,1971,1974,1975,1978,1979,1982,1983,1986,1987,1991,1994,1995,1999,2002,2003,2007,2011,2015,2019,2023,2027, 2031]
+        let tachinatsu6 = [1903,1907,1911]
+        
+        let mangzhong5 = [1900,1901,1904,1905,1906,1908,1909,1910,1912,1913,1914,1916,1917,1918,1920,1921,1922,1924,1925,1926,1928,1929,1930,1932,1933,1934,1935,1936,1937,1938,1939,
+        1940,1941,1942,1943,1944,1945,1946,1947,1948,1949,1950,1951,1952,1953,1954,1955,1956,1957,1958,1959,1960,1961,1962,1963,1964,1965,1966,1967,1970,1971,1973,1974,1975,1977,
+        1978,1979,1981,1982,1983,1985,1986,1987,1989,1990,1991,1993,1994,1995,1998,1999,2002,2003,2006,2007,2010,2011,2014,2015,2018,2019,2022,2023,2027,2031,2035,2039,2043,2047]
+        let mangzhong6 = [1902,1903,1907,1911,1915,1919,1923,1927,1931]
+        let mangzhong4 = [1968,1976,1980,1984,1992,1996,1997,2000,2001,2004,2005,2008,2009,2012,2013,2016,2017,2020,2024,2025,2026,2028,2029,
+        2030,2031,2032,2033,2034,2036,2037,2038,2040,2041,2044,2045,2048,2049,2050]
+        
+        let sSummer5 = [2020,2024,2028,2032,2036,2040,2044]
+        let sSummer6 = [1900,1904,1908,1910,1912,1916,1924,1928,1929,1932,1933,1936,1937
+        ,1940,1941,1944,1945,1948,1949,1952,1953,1956,1957,1958,1960,1961,1962
+        ,1964,1965, 1966, 1968, 1969, 1970, 1972, 1973, 1974, 1976, 1977, 1978
+        ,1980,1981,1982,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994
+        ,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006, 2007, 2008,2009
+        ,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2021,2022,2023,2025
+        ,2026,2027,2029,2030,2031,2033,2034,2035,2037,2038,2039,2041,2042,2043,
+        2045,2046,2047]
+        let sSummer7 = [1901,1902,
+        1903,1904,1905,1906,1909,1911,1913,1914,1915,1917,1918,1919
+        ,1920,1921,1922,1923,1925,1926,1927,1930,1931,1934,1935,1938,1939,1942,
+        1943,1946,1947,1950,1951,1954,1955,1959, 1963, 1967, 1971, 1975,1979,1983]
+
+        let liqiu6 = [1948,1952, 1956, 1960, 1964,1968,1972,1976, 1977, 1980, 1981, 1984
+        ,1985 , 1988, 1989, 1992, 1993, 1996, 1997, 1998, 2000, 2001, 2004, 2005, 2006
+        , 2008, 2009, 2010, 2012,2013,2014, 2016, 2017,2018 , 2020, 2021, 2022,2024,2025,
+        2026, 2028, 2029, 2030, 2032, 2033, 2034, 2035, 2036,2037,2038,2039,2040, 2041,
+        2042,2043,2044,2045,2046,2047]
+        let liqiu7 = [1900,1901, 1902, 1903,1904,1905,1906,1908,1909,1910,1912,1913,
+        1914,1915,1916,1917,1918,1919,1920,1921,1922,1923,1924,1925,1926,1927,1928,
+        1929,1930,1931,1932,1933,1934,1935,1936,1937,1938,1939,1940,1941,1942,1943,
+        1944,1945,1946,1947,1949,1950,1951,1953,1954,1955,1957,1958,1959,1961,1962,1963
+        ,1965, 1966,1967,1969,1970,1971, 1973 ,1974, 1975, 1978, 1979, 1982, 1983, 1986
+        , 1987, 1990, 1991, 1994, 1995, 1999, 2002, 2003, 2007, 2011, 2015, 2019, 2023
+        , 2027, 2031,]
+        let liqiu8 = [1907,1911]
+        
+        let bailu6 = [1960,1964,1968,1972,1976,1980,1984,1988,1989,1992,1993,1996,1997
+        ,2000,2001,2004,2005,2008,2009,2012,2013,2016,2017,2020,2021,2022,2024,2025,
+        2026,2028,2029,2030,2032,2033,2034,2036,2037,2038,2040,2041,2042,2044,2045,2046]
+        let bailu7 = [1900,1901,1902, 1904,1905,1906,1907, 1908,1909,1910,1912,1913,1914
+        ,1916, 1917,1918,1920,1921,1922,1924,1925,1926,1929,1930,1931, 1932,1933,1934,1935,1936, 1937, 1938, 1939, 1940, 1941,1942, 1943,1944, 1945,1946, 1947, 1948, 1949, 1950, 1951, 1952,1953,1954,1955,1956,1957,1958,1959
+        ,1961,1962,1963,1965,1966,1967,1969,1970,1971,1973,1974,1975,1977,1978,1979
+        ,1981,1982,1983,1985,1986,1987,1990,1991,1994,1995,1998,1999,2002,2003,2006
+        ,2007,2010,2011,2014,2015,2018,2019,2023,2027,2035,2039,2043,2047]
+        let bailu8 = [1903,1911,1915,1919,1923,1927,1928,2031]
+        
+        let frostDrop8 = [1900,1901,1902,1903,1904,1905,1906,1907,1908,1909,1910,1911,1912,1913,1914,1915, 1917, 1918, 1919, 1921, 1922, 1923, 1925, 1926, 1927, 1929, 1930, 1931,
+        1933, 1934, 1935, 1937, 1938, 1939, 1941, 1942, 1943, 1946, 1947, 1950, 1951, 1954, 1955, 1958, 1959, 1962, 1963, 1966, 1967, 1970, 1971, 1974, 1975, 1979,1983, 1987,1991,
+        1995,1999, 2003, 2007]
+        let frostDrop7 = [1916, 1920, 1924, 1928, 1932, 1936, 1937, 1940, 1944,1945, 1948, 1949, 1952, 1953, 1956, 1957,1960, 1961, 1964, 1965, 1968, 1969,1972, 1973, 1976
+        ,1977, 1978,1980,1981,1982,1984, 1985, 1986, 1988,1989, 1990, 1992,1993, 1994, 1996, 1997, 1998,2000, 2001, 2002, 2005,2006, 2008,2009,2010,2011,2012,2013,2014, 2015, 2016
+        ,2017,2018,2019,2020,2021,2022, 2023, 2024, 2025, 2026, 2027, 2028,2029,2030,2031,2032,2033,2034,2035,236,2037,2038,2039, 2041,2042,2043, 2045,2046,2047]
+        let frostDrop6 = [2040, 2044]
+        let liDong6 = [1928,1932,1940, 1944, 1948 , 1936, 1940, 1952, 1956,1960, 1961, 1964, 1965, 1968, 1969, 1972, 1973, 1976, 1977, 1980, 1981, 1984, 1985, 1988, 1989, 1992,
+        1993, 1994, 1996, 1997, 1998, 2000, 2001, 2002, 2004, 2005, 2006, 2008, 2009,2010, 2012, 2013,2014, 2016,2017, 2018, 2020, 2021,2022, 2024,2025,2026,2027, 2028, 2029, 2030,
+        2031,2032, 2033, 2034, 2035, 2036, 2037, 2038, 2039, 2040, 2041, 2042, 2043, 2044, 2045, 2046, 2047, 2048, 2049, 2050]
+        let liDong7 = [1900,1901,1902,1903,1904,1905,1906, 1907, 1908, 1909, 1910, 1911, 1912, 1913, 1914, 1915, 1916, 1917, 1918, 1919, 1920, 1921, 1922, 1923, 1924, 1925,
+        1926, 1927, 1929,1930,1931, 1933, 1934, 1935, 1937, 1938, 1939, 1941,1942, 1943, 1945, 1947, 1949, 1950, 1951, 1953, 1954, 1955, 1957, 1958, 1959, 1962, 1963, 1966,
+        1967, 1970, 1971, 1974, 1975, 1978, 1979, 1982, 1983, 1986, 1987, 1990, 1991, 1995, 1999, 2003, 2007, 2011, 2015, 2019, 2023]
+
+        let snow5 = [2020, 2024, 2028, 2032, 2036, 2040, 2044,2048]
+        let snow6 = [1900, 1904, 1906, 1912, 1916, 1920, 1921, 1924, 1925, 1928, 1929, 1932, 1933, 1936, 1937, 1940,1941, 1944, 1945, 1948,1949,1950,1951,1952,1953,1954,1956
+        ,1957,1958, 1960, 1961,1962,1963, 1964,1965,1966,1968, 1969, 1970, 1972, 1973, 1974, 1976, 1977, 1978, 1980, 1981, 1982, 1984,1985,1986,1987,1988,1989,1990, 1991, 1992,1993,
+        1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,2007,2008, 2009,2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2021,2022,2023,
+        2025,2026,2027, 2029, 2030, 2031, 2033,2034,2035,2037,2038, 2039,2041,2042,2045,2047,2047]
+        let snow7 = [1901,1902, 1903, 1905, 1906, 1907, 1909,1910,1911, 1913, 1914, 1915, 1917, 1918, 1919, 1922, 1923, 1926, 1927, 1930, 1931, 1934, 1935, 1938, 1939, 1943, 1946
+        ,1947,1950,1951, 1955, 1959, 1967, 1971, 1975, 1979, 1983]
+        
+        
+        for l in liDong6 {
+            liDong[l] = oneTosix}
+        for l in liDong7 {
+            liDong[l] = oneToseven}
+        
+        for snow in snow5{
+            bigSnow[snow] = oneTofive}
+        for snow in snow6{
+            bigSnow[snow] = oneTosix}
+        for snow in snow7{
+            bigSnow[snow] = oneToseven}
+        
+        
+        for f in frostDrop6 {
+            frostDrop[f] = oneTosix}
+        for f in frostDrop7 {
+            frostDrop[f] = oneToseven}
+        for f in frostDrop8 {
+            frostDrop[f] = oneTo8}
+        
+        for b in bailu6{
+            bailu[b] = oneTosix}
+        for b in bailu7{
+            bailu[b] = oneToseven}
+        for b in bailu8{
+            bailu[b] = oneTo8}
+        
+        for l in liqiu6 {
+            liqiu[l] = oneTosix}
+        for l in liqiu7 {
+            liqiu[l] = oneToseven}
+        for l in liqiu8 {
+            liqiu[l] = oneTo8}
+        
+        
+        
+        for shoukanyear in shoukanyears4 {
+        shoukan[shoukanyear] = oneTofour}
+        for shoukanyear in shoukanyears5 {
+        shoukan[shoukanyear] = oneTofive}
+        //assign specific days to shoukanyear
+        for shoukanyear in shoukanyears6 {
+            shoukan[shoukanyear] = oneTosix}
+        
+        for haruyear in haruyear4 {
+            haru[haruyear] = oneTofour}
+        for haruyear in haruyear2{
+            haru[haruyear] = oneTotwo }
+        for haruyear in haruyear3{
+            haru[haruyear] = oneTothree }
+        
+        for jingzheyear in jingzheyear4 {
+            jingzhe[jingzheyear] = oneTofour}
+        for jingzheyear in jingzheyear5 {
+            jingzhe[jingzheyear] = oneTofive}
+        for jingzheyear in jingzheyear6 {
+            jingzhe[jingzheyear] = oneTosix}
+        
+        for qingmingyear in qingming3 {
+            qingming[qingmingyear] = oneTothree}
+        for qingmingyear in qingming4 {
+            qingming[qingmingyear] = oneTofour}
+        for qingmingyear in qingming5 {
+            qingming[qingmingyear] = oneTofive}
+        
+        
+        for tachinatsuyear in tachinatsu4{
+            tachinatsu[tachinatsuyear] = oneTofour}
+        for tachinatsuyear in tachinatsu5{
+            tachinatsu[tachinatsuyear] = oneTofive}
+        for tachinatsuyear in tachinatsu6{
+            tachinatsu[tachinatsuyear] = oneTosix}
+        for mangzhongyear in mangzhong5{
+            mangzhong[mangzhongyear] = oneTofive}
+        for mangzhongyear in mangzhong4{
+            mangzhong[mangzhongyear] = oneTofour}
+        for mangzhongyear in mangzhong6{
+            mangzhong[mangzhongyear] = oneTosix}
+        for s in sSummer5 {
+        sSummer[s] = oneTofive}
+        for s in sSummer6 {
+        sSummer[s] = oneTosix}
+        for s in sSummer7 {
+        sSummer[s] = oneToseven}
+        
+        for b in bailu6{
+            bailu[b] = oneTosix}
+        for b in bailu7{
+            bailu[b] = oneToseven}
+        for b in bailu8{
+            bailu[b] = oneTo8}
+        
+        for l in liqiu6 {
+            liqiu[l] = oneTosix}
+        for l in liqiu7 {
+            liqiu[l] = oneToseven}
+        for l in liqiu8 {
+            liqiu[l] = oneTo8}
+        
+        
+        let year = extractDateComponentsYear(dateComponents: (year, month, day, ""))
+        let month = extractDateComponentsMonth(dateComponents: (year, month, day, ""))
+        let day = extractDateComponentsDay(dateComponents: (year, month, day, ""))
+        var thefinalword:String = " "
+        if month == 1 {
+                
+                for (key, value) in shoukan {
+                    if key == year {
+                        if value.contains(day) {
+//                            print("in shoukan")
+                            thefinalword = getBaxiMonthTop2(getBaxiyear:getBaxiyear, year: year, thatmonth: month)
+                            return thefinalword
+                        }
+                        else{
+                            thefinalword = getBaxiMonthTopJan(getBaxiyear:getBaxiyear, year: year, thatmonth: month)
+                            return thefinalword
+                        }
+                    }
+                  
+                }
+            
+        }
+        if month == 2{
+                
+                for (key, value) in haru {
+                    if key == year {
+                        if value.contains(day) {
+//                            print("haru")
+                            thefinalword = getBaxiMonthTopMinus(getBaxiyear:getBaxiyear, year: year, thatmonth: month)
+                            return thefinalword
+                            
+                        }
+                        thefinalword = getBaxiMonthTop(getBaxiyear:getBaxiyear, year: year, thatmonth: month)
+                        return thefinalword
+                    }
+                }
+            
+        }
+        if month == 3 {
+            
+                for (key, value) in jingzhe {
+                    if key == year {
+                        if value.contains(day) {
+//                            print("jinzhe")
+                            thefinalword = getBaxiMonthTopMinus(getBaxiyear:getBaxiyear, year: year, thatmonth: month)
+                            return thefinalword
+                        } else {
+                            thefinalword = getBaxiMonthTop(getBaxiyear:getBaxiyear, year: year, thatmonth: month)
+                            return thefinalword
+                        }
+                    }
+                }
+            
+        }
+        if month == 4 {
+            
+                for (key, value) in qingming {
+                    if key == year {
+                        if value.contains(day) {
+//                            print("qingming")
+                            thefinalword = getBaxiMonthTopMinus(getBaxiyear:getBaxiyear, year: year, thatmonth: month)
+                            return thefinalword
+                        }else {
+                            thefinalword = getBaxiMonthTop(getBaxiyear:getBaxiyear, year: year, thatmonth: month)
+                            return thefinalword
+                        }
+                        
+                    }
+            }
+            
+        }
+        if month == 5 {
+           
+                for (key, value) in tachinatsu {
+                    if key == year {
+                        if value.contains(day) {
+//                            print("qingming")
+                            thefinalword = getBaxiMonthTopMinus(getBaxiyear:getBaxiyear, year: year, thatmonth: month)
+                            return thefinalword
+                        } else {
+                            thefinalword = getBaxiMonthTop(getBaxiyear:getBaxiyear, year: year, thatmonth: month)
+                            return thefinalword
+                        }
+                    }
+                }
+        }
+        if month == 6 {
+            
+                for (key, value) in mangzhong {
+                    if key == year {
+                        if value.contains(day) {
+//                            print("mangzhong")
+                            thefinalword = getBaxiMonthTopMinus(getBaxiyear:getBaxiyear, year: year, thatmonth: month)
+                            return thefinalword
+                        } else {
+                            thefinalword = getBaxiMonthTop(getBaxiyear:getBaxiyear, year: year, thatmonth: month)
+                            return thefinalword
+                        }
+                    }
+                }
+                
+        }
+        if month == 7 {
+            
+                for (key, value) in sSummer {
+                    if key == year {
+                        if value.contains(day) {
+//                            print("mangzhong")
+                            thefinalword = getBaxiMonthTopMinus(getBaxiyear:getBaxiyear, year: year, thatmonth: month)
+                            return thefinalword
+                        } else {
+                            thefinalword = getBaxiMonthTop(getBaxiyear:getBaxiyear, year: year, thatmonth: month)
+                            return thefinalword
+                        }
+                    }
+                }
+                
+        }
+        
+        if month == 8 {
+            
+                for (key, value) in liqiu {
+                    if key == year {
+                        if value.contains(day) {
+//                            print("mangzhong")
+                            thefinalword = getBaxiMonthTopMinus(getBaxiyear:getBaxiyear, year: year, thatmonth: month)
+                            return thefinalword
+                        } else {
+                            thefinalword = getBaxiMonthTop(getBaxiyear:getBaxiyear, year: year, thatmonth: month)
+                            return thefinalword
+                        }
+                    }
+                }
+                
+        }
+        if month == 9 {
+            
+                for (key, value) in bailu {
+                    if key == year {
+                        if value.contains(day) {
+//                            print("mangzhong")
+                            thefinalword = getBaxiMonthTopMinus(getBaxiyear:getBaxiyear, year: year, thatmonth: month)
+                            return thefinalword
+                        } else {
+                            thefinalword =  getBaxiMonthTop(getBaxiyear:getBaxiyear, year: year, thatmonth: month)
+                            return thefinalword
+                        }
+                    }
+                }
+                
+        }
+        if month == 10 {
+            
+                for (key, value) in frostDrop {
+                    if key == year {
+                        if value.contains(day) {
+//                            print("mangzhong")
+                            thefinalword = getBaxiMonthTopMinus(getBaxiyear:getBaxiyear, year: year, thatmonth: month)
+                            return thefinalword
+                        } else {
+                            thefinalword = getBaxiMonthTop(getBaxiyear:getBaxiyear, year: year, thatmonth: month)
+                            return thefinalword
+                        }
+                    }
+                }
+                
+        }
+        if month == 11 {
+            
+                for (key, value) in liDong {
+                    if key == year {
+                        if value.contains(day) {
+//                            print("mangzhong")
+                            thefinalword = getBaxiMonthTopMinus(getBaxiyear:getBaxiyear, year: year, thatmonth: month)
+                            return thefinalword
+                        } else {
+                            thefinalword = getBaxiMonthTop(getBaxiyear:getBaxiyear, year: year, thatmonth: month)
+                            return thefinalword
+                        }
+                    }
+                }
+        }
+        if month == 12 {
+            
+                for (key, value) in bigSnow {
+                    if key == year {
+                        if value.contains(day) {
+//                            print("mangzhong")
+                            thefinalword = getBaxiMonthTopMinus(getBaxiyear:getBaxiyear, year: year, thatmonth: month)
+                            return thefinalword
+                        } else {
+                            thefinalword = getBaxiMonthTop(getBaxiyear:getBaxiyear, year: year, thatmonth: month)
+                            return thefinalword
+                        }
+                    }
+                }
+        }
+        
+        return thefinalword
+        
+    }
+    
+    
+    
     ////https://baike.baidu.com/item/天干地支/278140
     ////:the website to calculate Baxi, year, day and time
     ///////https://www.163.com/dy/article/G5FA0FGK0532D4MK.html
@@ -132,21 +562,135 @@ class birthdaybaxiCal {
         }
         return calyear
     }
-    func getBaximonthtop(getBaxiyear:(Int, Int) -> String ,year:Int, thatmonth:Int) -> String{
-        var resultTop: String
-        let remainmonth: Int
+    func getBaxiMonthTop(getBaxiyear:(Int, Int) -> String ,year: Int, thatmonth:Int) -> String{
+        var newjiazhi = ""
+        var newyigeng = ""
+        var newbingxin = ""
+        var newdingRen = ""
+        var newPentadecyl = ""
+        let yigeng = ["","丁","戊", "己", "庚", "辛", "壬", "癸", "甲", "乙","丙", "丁","戊" ]
+        let jiazhi = ["","乙","丙", "丁", "戊", "己", "庚", "辛", "壬", "癸", "甲", "乙","丙"]
+        let bingxin = ["","己","庚", "辛", "壬", "癸", "甲", "乙","丙", "丁","戊", "己", "庚"]
+        let dingRen = ["","辛","壬", "癸", "甲", "乙","丙", "丁","戊", "己", "庚", "辛","壬"]
+        let pentadecyl = ["","癸","甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸","甲"]
         let result = getBaxiyear(year, thatmonth)
-        guard let index = 天干.firstIndex(of: result) else { return "" }
-        let baxithatmonth = ((index+1)*2) + thatmonth
-        if baxithatmonth >= 11{
-            remainmonth = baxithatmonth % 10
-            resultTop = 天干[remainmonth]
-        } else {
-            remainmonth = baxithatmonth
-            resultTop = 天干[remainmonth]
+        switch result {
+        case "甲", "己" :
+            newjiazhi = jiazhi[thatmonth]
+            break
+        case "乙","庚":
+            newyigeng = yigeng[thatmonth]
+            break
+        case "丙","辛":
+            newbingxin = bingxin[thatmonth]
+            break
+        case "丁","壬":
+            newdingRen = dingRen[thatmonth]
+            break
+        case "戊","癸":
+            newPentadecyl = pentadecyl[thatmonth]
+            break
+        default:
+            break
         }
-        return resultTop
+        
+        return newyigeng+newbingxin+newdingRen+newjiazhi+newPentadecyl
     }
+    func getBaxiMonthTop2(getBaxiyear:(Int, Int) -> String ,year: Int, thatmonth:Int) -> String{
+        var newjiazhi = ""
+        var newyigeng = ""
+        var newbingxin = ""
+        var newdingRen = ""
+        var newPentadecyl = ""
+        let result = getBaxiyear(year, thatmonth)
+        switch result {
+        case "甲", "己" :
+            newjiazhi = "丙"
+            break
+        case "乙","庚":
+            newyigeng = "戊"
+            break
+        case "丙","辛":
+            newbingxin = "庚"
+            break
+        case "丁","壬":
+            newdingRen = "壬"
+            break
+        case "戊","癸":
+            newPentadecyl = "甲"
+            break
+        default:
+            break
+        }
+        
+        return newyigeng+newbingxin+newdingRen+newjiazhi+newPentadecyl
+    }
+    func getBaxiMonthTopJan(getBaxiyear:(Int, Int) -> String ,year: Int, thatmonth:Int) -> String{
+        var newjiazhi = ""
+        var newyigeng = ""
+        var newbingxin = ""
+        var newdingRen = ""
+        var newPentadecyl = ""
+        let result = getBaxiyear(year, thatmonth)
+        switch result {
+        case "甲", "己" :
+            newjiazhi = "丁"
+            break
+        case "乙","庚":
+            newyigeng = "己"
+            break
+        case "丙","辛":
+            newbingxin = "辛"
+            break
+        case "丁","壬":
+            newdingRen = "癸"
+            break
+        case "戊","癸":
+            newPentadecyl = "乙"
+            break
+        default:
+            break
+        }
+        
+        return newyigeng+newbingxin+newdingRen+newjiazhi+newPentadecyl
+    }
+    func getBaxiMonthTopMinus(getBaxiyear:(Int, Int) -> String ,year: Int, thatmonth:Int) -> String{
+        var newjiazhi = ""
+        var newyigeng = ""
+        var newbingxin = ""
+        var newdingRen = ""
+        var newPentadecyl = ""
+        let lunarMonth = thatmonth - 1
+        let yigeng = ["","丁","戊", "己", "庚", "辛", "壬", "癸", "甲", "乙","丙", "丁","戊" ]
+        let jiazhi = ["","乙","丙", "丁", "戊", "己", "庚", "辛", "壬", "癸", "甲", "乙","丙"]
+        let bingxin = ["","己","庚", "辛", "壬", "癸", "甲", "乙","丙", "丁","戊", "己", "庚"]
+        let dingRen = ["","辛","壬", "癸", "甲", "乙","丙", "丁","戊", "己", "庚", "辛","壬"]
+        let pentadecyl = ["","癸","甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸","甲"]
+        let result = getBaxiyear(year, thatmonth)
+        switch result {
+        case "甲", "己" :
+            newjiazhi = jiazhi[lunarMonth]
+            break
+        case "乙","庚":
+            newyigeng = yigeng[lunarMonth]
+            break
+        case "丙","辛":
+            newbingxin = bingxin[lunarMonth]
+            break
+        case "丁","壬":
+            newdingRen = dingRen[lunarMonth]
+            break
+        case "戊","癸":
+            newPentadecyl = pentadecyl[lunarMonth]
+            break
+        default:
+            break
+        }
+        
+        return newyigeng+newbingxin+newdingRen+newjiazhi+newPentadecyl
+    }
+    
+
     func getBaxiMonthbot(month:Int) ->String{
         var di:String = ""
         if month == 12 {
@@ -214,4 +758,8 @@ class birthdaybaxiCal {
             }
             return data[stem] ?? ""
         }
+    
+   
 }
+
+
