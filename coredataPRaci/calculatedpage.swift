@@ -22,12 +22,17 @@ struct calculatedpage: View {
     
     var body: some View {
         
-        VStack{
-            Text(entity.name ?? "")
-            Text(entity.birthday ?? Date(), style: .date)
-            Text(entity.birthday ?? Date(), style: .time)
-            Text(entity.toggleSex ? "Female" : "Male")
+        ZStack {
+            BadgeBackground()
+            
+            VStack{
+                Text(entity.name ?? "")
+                Text(entity.birthday ?? Date(), style: .date)
+                Text(entity.birthday ?? Date(), style: .time)
+                Text(entity.toggleSex ? "Female" : "Male")
+            }
         }
+        .background(Image("fbgimage").resizable().frame(width: 1400, height: 1400) .aspectRatio(contentMode: .fit))
         Button(action:{
             print(calcu.extractDateComponentsTime(dateComponents: dateComponents))
             print(calcu.getBaxiyear(year: self.dateComponents.0,month: self.dateComponents.1))
@@ -46,6 +51,8 @@ struct calculatedpage: View {
                 .background(Color(.systemPink))
                 .cornerRadius(10)
         })
+        
+       
     }
     
     
@@ -59,8 +66,8 @@ struct calculatedpage: View {
 //    static var previews: some View {
 //        let entity = FruitEntity()
 //
-//        calculatedpage(entity: entity)
+//        calculatedpage(entity: entity, id: UUID())
 //    }
 //}
-
+//
 

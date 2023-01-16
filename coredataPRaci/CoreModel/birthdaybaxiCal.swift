@@ -132,21 +132,47 @@ class birthdaybaxiCal {
         }
         return calyear
     }
-    func getBaximonthtop(getBaxiyear:(Int, Int) -> String ,year:Int, thatmonth:Int) -> String{
+    
+    func getBaximonthtop(getBaxiyear:(Int, Int) -> String ,year: Int, thatmonth:Int) -> String{
+        var newThatmonth: Int
         var resultTop: String
-        let remainmonth: Int
+        var remainmonth: Int
         let result = getBaxiyear(year, thatmonth)
         guard let index = 天干.firstIndex(of: result) else { return "" }
-        let baxithatmonth = ((index+1)*2) + thatmonth
+        let newIndex = index + 1
+        if thatmonth == 1{
+            newThatmonth = 12
+        }else {
+            newThatmonth = thatmonth - 1
+        }
+        let baxithatmonth = ((newIndex)*2) + newThatmonth
         if baxithatmonth >= 11{
-            remainmonth = baxithatmonth % 10
-            resultTop = 天干[remainmonth]
-        } else {
+                remainmonth = (baxithatmonth % 10) - 1 
+                if remainmonth == 0 {
+                    remainmonth = 9
+                }
+                resultTop = 天干[remainmonth]
+            }  else {
             remainmonth = baxithatmonth
             resultTop = 天干[remainmonth]
         }
         return resultTop
     }
+//    func getBaximonthtop(getBaxiyear:(Int, Int) -> String ,year:Int, thatmonth:Int) -> String{
+//        var resultTop: String
+//        let remainmonth: Int
+//        let result = getBaxiyear(year, thatmonth)
+//        guard let index = 天干.firstIndex(of: result) else { return "" }
+//        let baxithatmonth = ((index+1)*2) + thatmonth
+//        if baxithatmonth >= 11{
+//            remainmonth = baxithatmonth % 10
+//            resultTop = 天干[remainmonth]
+//        } else {
+//            remainmonth = baxithatmonth
+//            resultTop = 天干[remainmonth]
+//        }
+//        return resultTop
+//    }
     func getBaxiMonthbot(month:Int) ->String{
         var di:String = ""
         if month == 12 {

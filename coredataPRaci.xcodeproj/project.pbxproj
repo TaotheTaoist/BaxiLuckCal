@@ -13,12 +13,12 @@
 		286FFB38295C7D4400D10E8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 286FFB37295C7D4400D10E8A /* Assets.xcassets */; };
 		286FFB3B295C7D4400D10E8A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 286FFB3A295C7D4400D10E8A /* Preview Assets.xcassets */; };
 		286FFB43295C7D9400D10E8A /* coremodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 286FFB41295C7D9300D10E8A /* coremodel.xcdatamodeld */; };
-		286FFB692962A24E00D10E8A /* firstPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FFB682962A24E00D10E8A /* firstPage.swift */; };
 		286FFB6F2962B6D900D10E8A /* addNameBirth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FFB6E2962B6D900D10E8A /* addNameBirth.swift */; };
 		286FFB712962F2E100D10E8A /* calculatedpage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FFB702962F2E100D10E8A /* calculatedpage.swift */; };
 		286FFB742966E02100D10E8A /* birthdaybaxiCal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FFB732966E02100D10E8A /* birthdaybaxiCal.swift */; };
 		28F9856629718543006EB3B0 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F9856529718543006EB3B0 /* SwiftUIView.swift */; };
 		28F9856A29729C60006EB3B0 /* firstpagev1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F9856929729C60006EB3B0 /* firstpagev1.swift */; };
+		28F9856D2975A13E006EB3B0 /* statsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F9856C2975A13E006EB3B0 /* statsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,12 +30,12 @@
 		286FFB3A295C7D4400D10E8A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		286FFB42295C7D9400D10E8A /* coremodel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = coremodel.xcdatamodel; sourceTree = "<group>"; };
 		286FFB672960739C00D10E8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		286FFB682962A24E00D10E8A /* firstPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstPage.swift; sourceTree = "<group>"; };
 		286FFB6E2962B6D900D10E8A /* addNameBirth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addNameBirth.swift; sourceTree = "<group>"; };
 		286FFB702962F2E100D10E8A /* calculatedpage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = calculatedpage.swift; sourceTree = "<group>"; };
 		286FFB732966E02100D10E8A /* birthdaybaxiCal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = birthdaybaxiCal.swift; sourceTree = "<group>"; };
 		28F9856529718543006EB3B0 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		28F9856929729C60006EB3B0 /* firstpagev1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstpagev1.swift; sourceTree = "<group>"; };
+		28F9856C2975A13E006EB3B0 /* statsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = statsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,12 +90,11 @@
 		286FFB4429600BEA00D10E8A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				28F9856B2975A103006EB3B0 /* New Group */,
 				286FFB6E2962B6D900D10E8A /* addNameBirth.swift */,
 				286FFB702962F2E100D10E8A /* calculatedpage.swift */,
-				286FFB682962A24E00D10E8A /* firstPage.swift */,
 				28F9856929729C60006EB3B0 /* firstpagev1.swift */,
 				28403EBE296FE50800C5E148 /* trynewui.swift */,
-				28F9856529718543006EB3B0 /* SwiftUIView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -107,6 +106,15 @@
 				286FFB732966E02100D10E8A /* birthdaybaxiCal.swift */,
 			);
 			path = CoreModel;
+			sourceTree = "<group>";
+		};
+		28F9856B2975A103006EB3B0 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				28F9856529718543006EB3B0 /* SwiftUIView.swift */,
+				28F9856C2975A13E006EB3B0 /* statsView.swift */,
+			);
+			name = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,13 +190,13 @@
 				28403EBF296FE50800C5E148 /* trynewui.swift in Sources */,
 				286FFB43295C7D9400D10E8A /* coremodel.xcdatamodeld in Sources */,
 				28F9856629718543006EB3B0 /* SwiftUIView.swift in Sources */,
+				28F9856D2975A13E006EB3B0 /* statsView.swift in Sources */,
 				286FFB742966E02100D10E8A /* birthdaybaxiCal.swift in Sources */,
 				286FFB36295C7D4200D10E8A /* CoreDataViewModel.swift in Sources */,
 				286FFB712962F2E100D10E8A /* calculatedpage.swift in Sources */,
 				286FFB34295C7D4200D10E8A /* maindoc.swift in Sources */,
 				286FFB6F2962B6D900D10E8A /* addNameBirth.swift in Sources */,
 				28F9856A29729C60006EB3B0 /* firstpagev1.swift in Sources */,
-				286FFB692962A24E00D10E8A /* firstPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
